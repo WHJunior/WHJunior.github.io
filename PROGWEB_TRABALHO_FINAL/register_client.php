@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Cadastro de Cliente</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div class="form-container">

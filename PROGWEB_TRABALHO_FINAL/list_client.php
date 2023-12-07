@@ -21,17 +21,18 @@ $clients = $stmt->fetchAll();
 <html>
 <head>
     <title>Lista de Clientes</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <button class="logout-button" onclick="location.href='process_logout.php'">Sair</button>
     <div class="list-client-container">
         <form action="list_client.php" method="get">
             <input type="text" name="search" placeholder="Buscar por nome" value="<?php echo htmlspecialchars($search); ?>">
             <button type="submit">Buscar</button>
         </form>
         </br>
-        <div class="acoes">
-            <a href="register_client.php" class="btn-incluir">Incluir</a>
+        <div class="acoes link-container">
+            <a href="register_client.php">Incluir</a>
         </div>
         <table>
             <thead>
@@ -40,6 +41,7 @@ $clients = $stmt->fetchAll();
                     <th>Sobrenome</th>
                     <th>Data de Nascimento</th>
                     <th>Email</th>
+                    <th>Excluir</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +51,7 @@ $clients = $stmt->fetchAll();
                         <td><?php echo htmlspecialchars($client['sobrenome']); ?></td>
                         <td><?php echo htmlspecialchars($client['data_nascimento']); ?></td>
                         <td><?php echo htmlspecialchars($client['email']); ?></td>
+                        <td class="link-container"><a href="process_delete_client.php?codigo=<?= htmlspecialchars($client['codigo']) ?>">Excluir</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'register_client
     $client->email = $_POST['email'];
     if ($client->register()) {
         header('Location: list_client.php');
+        echo "<script>alert('Cadastro realizado com sucesso!.')</script>";
     }
 }
 ?>

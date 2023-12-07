@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div class="form-container">
@@ -14,10 +14,16 @@
             <input type="password" name="password" id="password" required><br>
             <button type="submit" name="action" value="login">Entrar</button>
         </form>
-        <p>Ainda não tem uma conta? <a href="register_user.php">Cadastre-se</a></p>
-        <?php if (isset($_GET['error'])): ?>
-            <p>Erro de login: credenciais inválidas</p>
-        <?php endif; ?>
+        <p class="link-container">Ainda não tem uma conta? <a href="register_user.php">Cadastre-se</a></p>
+        <?php 
+            if (isset($_GET['error'])) {
+                echo "<p class=\"error-message\">Credenciais inválidas</p>";
+            } else if(isset($_GET['registration_success'])) {
+                echo "<p class=\"success-message\">Cadastro realizado com sucesso.</p>";
+            } else if(isset($_GET['registration_failed'])) {
+                echo "<p class=\"error-message\">O cadastro falhou.</p>";
+            }
+        ?>
     </div>
 </body>
 </html>

@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS clients;
+
+CREATE TABLE clients (
+    codigo SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    sobrenome VARCHAR(100),
+    data_nascimento DATE,
+    email VARCHAR(255) UNIQUE
+);
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
