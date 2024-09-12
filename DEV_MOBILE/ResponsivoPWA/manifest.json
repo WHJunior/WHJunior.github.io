@@ -1,0 +1,21 @@
+{
+  "name": "Harry Potter Site",
+  "short_name": "HP Site",
+  "description": "Um site responsivo sobre o universo de Harry Potter.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4B0082",
+  "icons": [
+    {
+      "src": "imagens/hogwarts.jpg",
+      "sizes": "800x450",
+      "type": "image/jpg"
+    },
+    {
+      "src": "imagens/brasao.webp",
+      "sizes": "450x450",
+      "type": "image/webp"
+    }
+  ]
+}
