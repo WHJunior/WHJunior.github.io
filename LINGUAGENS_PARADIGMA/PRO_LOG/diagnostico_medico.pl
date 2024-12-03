@@ -1,25 +1,38 @@
-% Fatos de sintomas
+% Base de fatos para sintomas
 sintoma(febre).
-sintoma(dor_de_cabeca).
 sintoma(tosse).
+sintoma(dor_de_cabeca).
 sintoma(dor_de_garganta).
 sintoma(dor_muscular).
+sintoma(cansaco).
+sintoma(nauseas).
 
-% Regras de diagnóstico
-doenca(gripe) :- febre, tosse, cansaco.
-doenca(infeccao_viral) :- febre, dor_de_garganta, dor_muscular.
-doenca(enxaqueca) :- dor_de_cabeca, nauseas.
+% Regras para diagnósticos
+doenca(gripe, Sintomas) :-
+    member(febre, Sintomas),
+    member(tosse, Sintomas),
+    member(cansaco, Sintomas).
+
+doenca(infeccao_viral, Sintomas) :-
+    member(febre, Sintomas),
+    member(dor_de_garganta, Sintomas),
+    member(dor_muscular, Sintomas).
+
+doenca(enxaqueca, Sintomas) :-
+    member(dor_de_cabeca, Sintomas),
+    member(nauseas, Sintomas).
 
 % Interação com o usuário
 diagnostico :-
-    write('Informe os sintomas separados por vírgula (ex: febre, tosse): '),
-    read(Input),
-    atom_string(Input, SintomasStr),
-    split_string(SintomasStr, ", ", "", SintomasList),
+    write('Informe os sintomas separados por vírgula (ex: febre,tosse): '),
+    read_line_to_string(user_input, Input), % Lê a entrada do usuário como uma string
+    split_string(Input, ",", " ", SintomasStrList), % Divide a string pelos delimitadores de vírgula
+    maplist(atom_string, SintomasList, SintomasStrList), % Converte strings para átomos
     diagnosticar(SintomasList).
 
+% Processo de diagnóstico
 diagnosticar(Sintomas) :-
-    (   member(febre, Sintomas), member(tosse, Sintomas) -> write('Possível diagnóstico: Gripe');
-        member(febre, Sintomas), member(dor_de_garganta, Sintomas) -> write('Possível diagnóstico: Infecção Viral');
-        write('Recomendação: Consulte um médico para avaliação.')
+    (   doenca(Doenca, Sintomas) ->
+        format('Possível diagnóstico: ~w~n', [Doenca]);
+        write('Recomendação: Consulte um médico para avaliação.~n')
     ).
