@@ -1,0 +1,16 @@
+{
+    "name": "Guardiões do Rio",
+    "short_name": "Guardiões",
+    "description": "Um site responsivo de um álbum de figurinhas de capivara.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4B0082",
+    "icons": [
+      {
+        "src": "img/capiicon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
